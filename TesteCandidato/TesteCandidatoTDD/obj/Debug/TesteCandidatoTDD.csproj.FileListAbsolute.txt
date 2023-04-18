@@ -1,0 +1,17 @@
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\TesteCandidatoTDD.dll
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\TesteCandidatoTDD.pdb
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\TesteCandidatoTriangulo.exe
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\TesteCandidatoTriangulo.pdb
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\TesteCandidatoTriangulo.exe.config
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\obj\Debug\TesteCandidatoTDD.csprojAssemblyReference.cache
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\obj\Debug\TesteCandidatoTDD.csproj.CoreCompileInputs.cache
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\obj\Debug\TesteCandidatoTDD.csproj.CopyComplete
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\obj\Debug\TesteCandidatoTDD.dll
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTDD\obj\Debug\TesteCandidatoTDD.pdb

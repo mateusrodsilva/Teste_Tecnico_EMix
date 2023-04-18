@@ -1,0 +1,7 @@
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTriangulo\bin\Debug\TesteCandidatoTriangulo.exe.config
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTriangulo\bin\Debug\TesteCandidatoTriangulo.exe
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTriangulo\bin\Debug\TesteCandidatoTriangulo.pdb
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTriangulo\obj\Debug\TesteCandidatoTriangulo.csprojAssemblyReference.cache
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTriangulo\obj\Debug\TesteCandidatoTriangulo.csproj.CoreCompileInputs.cache
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTriangulo\obj\Debug\TesteCandidatoTriangulo.exe
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidatoTriangulo\obj\Debug\TesteCandidatoTriangulo.pdb

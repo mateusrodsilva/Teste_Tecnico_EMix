@@ -1,0 +1,10 @@
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\bin\Debug\TesteCandidato.exe.config
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\bin\Debug\TesteCandidato.exe
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\bin\Debug\TesteCandidato.pdb
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.csprojAssemblyReference.cache
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.csproj.CoreCompileInputs.cache
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.exe
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.pdb
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.csproj.CopyComplete
