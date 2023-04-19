@@ -131,14 +131,12 @@ namespace TesteCandidato
             connection.Close();
             connection.Dispose();
 
-            //TODO: Retornar os dados do CEP infomado no início para o usuário
-            System.Console.WriteLine($"O CEP digitado remete ao endereço: \n
-            CEP: {jsonRetorno.cep} \n
-            Logradouro: {jsonRetorno.logradouro}\n
-            Complemento: {jsonRetorno.complemento}\n
-            Bairro: {jsonRetorno.bairro}\n
-            Localidade: {jsonRetorno.localidade}\n
-            UF: {jsonRetorno.uf}\n");
+            ////TODO: Retornar os dados do CEP infomado no início para o usuário
+            //System.Console.WriteLine($"O CEP digitado remete ao endereço: \nCEP: {jsonRetorno.cep} \nLogradouro: {jsonRetorno.logradouro}\n" +
+            //    $"            Complemento: {jsonRetorno.complemento}\n" +
+            //    $"            Bairro: {jsonRetorno.bairro}\n" +
+            //    $"            Localidade: {jsonRetorno.localidade}\n" +
+            //    $"            UF: {jsonRetorno.uf} \n");
 
             Console.WriteLine("Deseja visualizar todos os CEPs de alguma UF? Se sim, informar UF, se não, informar sair.");
             string resposta = Console.ReadLine();

@@ -8,3 +8,14 @@ C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\obj\Debug\TesteCa
 C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Joao Yunes\source\repos\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.csproj.CopyComplete
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\bin\Debug\TesteCandidato.exe.config
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\bin\Debug\TesteCandidato.exe
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\bin\Debug\TesteCandidato.pdb
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\bin\Debug\Newtonsoft.Json.dll
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\bin\Debug\Newtonsoft.Json.xml
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.csproj.AssemblyReference.cache
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.csproj.SuggestedBindingRedirects.cache
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.csproj.CoreCompileInputs.cache
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.csproj.CopyComplete
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.exe
+C:\Users\mrodr\OneDrive\Documentos\Teste_Tecnico_EMix\TesteCandidato\TesteCandidato\obj\Debug\TesteCandidato.pdb
