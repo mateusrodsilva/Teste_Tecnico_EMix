@@ -30,9 +30,9 @@ namespace TesteCandidato
             //TODO: Fazer um projeto WEB
 
             //TODO: Perguntar se o usuário quer consultar se logradouro existe na base
-            Console.WriteLine("Olá bem vindo ao sistema de consultar CEP!");
+            Console.WriteLine("Olá! Seja bem vindo ao sistema de consultar CEP!");
             Console.WriteLine("------------------------------------------");
-            Console.WriteLine("Gostaria de consultar se o logradouro existe na base?\n Se quiser, digite SIM, senão SAIR");
+            Console.WriteLine("Gostaria de consultar se o logradouro existe em nossa base de dados?\n Se quiser, digite SIM, senão SAIR");
 
             var respostaIniciarSistema = Console.ReadLine();
 
@@ -105,11 +105,55 @@ namespace TesteCandidato
 
             JObject jsonRetorno = JsonConvert.DeserializeObject<JObject>(result);
 
+            //Dados de conexão Banco de Dados
+            string stringConexao = "Data Source=LAPTOP-LQPG37D5\\SQLEXPRESS;Initial Catalog=CEP;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
+            SqlConnection connection = new SqlConnection(stringConexao);         
 
-          
+            //TO DO Implementar Dapper
+            string query = $"SELECT cep FROM CEP WHERE cep = {cep}";
+            bool cepCadastrado = false;
+            SqlCommand sqlCommand = new SqlCommand(query, connection);
+            try
+            {
+                connection.Open();
+                adapter.SelectCommand = sqlCommand;
+                adapter.Fill(ds, "Create DataView");
+                adapter.Dispose();
+
+                dv = ds.Tables[0].DefaultView;
+
+                if(dv.Count > 0){
+                    cepCadastrado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }     
+
+            if(cepCadastrado == true){
+                Console.WriteLine("Já temos esse CEP cadastrado em nossa base!");
+            }else{
+                string desejaCadastrarCEP = string.Empty;
+                do{
+                    Console.WriteLine("Não temos esse CEP cadastrado em nossa base! \nDeseja cadastrar esse CEP? Se quiser digite SIM, se não NÃO");
+
+                    desejaCadastrarCEP = Console.ReadLine();
+                }while(desejaCadastrarCEP == string.Empty || desejaCadastrarCEP.ToUpper() != "SAIR")
+
+                if(desejaCadastrarCEP.ToUpper() == "SAIR"){
+                    Console.WriteLine("Encerrando...");
+                    Console.ReadLine();
+                    return;
+                }
+                
+            }
 
             //TODO: Validar CEP existente
-            string query = "INSERT INTO [dbo].[CEP] ([cep], [logradouro], [complemento], [bairro], [localidade], [uf], [unidade], [ibge], [gia]) VALUES (";
+            query = "INSERT INTO [dbo].[CEP] ([cep], [logradouro], [complemento], [bairro], [localidade], [uf], [unidade], [ibge], [gia]) VALUES (";
             query = query + "'" + jsonRetorno["cep"] + "'";
             query = query + ",'" + jsonRetorno["logradouro"] + "'";
             query = query + ",'" + jsonRetorno["complemento"] + "'";
@@ -120,9 +164,7 @@ namespace TesteCandidato
             query = query + ",'" + jsonRetorno["ibge"] + "'";
             query = query + ",'" + jsonRetorno["gia"] + "'" + ")";
 
-            string stringConexao = "Data Source=LAPTOP-LQPG37D5\\SQLEXPRESS;Initial Catalog=CEP;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
-            SqlConnection connection = new SqlConnection(stringConexao);
-            SqlCommand sqlCommand = new SqlCommand(query, connection);
+            
 
             sqlCommand.CommandType = CommandType.Text;
 
@@ -151,11 +193,24 @@ namespace TesteCandidato
                 $"Localidade: {jsonRetorno["localidade"]}\n" +
                 $"UF: {jsonRetorno["uf"]} \n");
 
+            
+            string resposta = string.Empty;
             Console.WriteLine("Deseja visualizar todos os CEPs cadastrados em nossa base de dados de alguma UF? Se sim, informar UF, se não, informar sair.");
-            string resposta = Console.ReadLine();
+            do{
+                if(resposta.ToUpper() > 2){
+                    Console.WriteLine("UF inválida");
+                    Console.WriteLine("Digite a UF novamente:");
+                }else if()
+                resposta = Console.ReadLine();
+            }while(resposta.Length > 2)
+
+            
+            
 
             if (resposta == "sair")
             {
+                Console.WriteLine("Encerrando...");
+                Console.ReadLine();
                 return;
             }
 
@@ -171,7 +226,7 @@ namespace TesteCandidato
             }
 
 
-
+            //To Do Implementar Dapper
             connection = new SqlConnection(stringConexao);
             sqlCommand = new SqlCommand("Select * from CEP", connection);
 
