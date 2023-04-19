@@ -151,7 +151,7 @@ namespace TesteCandidato
                 $"Localidade: {jsonRetorno["localidade"]}\n" +
                 $"UF: {jsonRetorno["uf"]} \n");
 
-            Console.WriteLine("Deseja visualizar todos os CEPs de alguma UF? Se sim, informar UF, se não, informar sair.");
+            Console.WriteLine("Deseja visualizar todos os CEPs cadastrados em nossa base de dados de alguma UF? Se sim, informar UF, se não, informar sair.");
             string resposta = Console.ReadLine();
 
             if (resposta == "sair")
@@ -201,6 +201,10 @@ namespace TesteCandidato
                         {
                             Console.Write(";" + dv[i]["cep"]);
                         }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não temos CEPs dessa UF Cadastrados em nossa base! Para cadastrar, reinicie o sistema.");
                     }
                 }
             }
