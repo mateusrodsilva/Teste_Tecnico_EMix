@@ -82,7 +82,7 @@ namespace TesteCandidato
                 }
 
                 //Exemplo CEP 13050020
-                string viaCEPUrl = "https://viacep.com.br/ws/" + cep + "/json/";
+                string viaCEPUrl = $"https://viacep.com.br/ws/{cep}/json/";
 
                 //TODO: Resolver dados com caracter especial no retorno do JSON 
                 WebClient client = new WebClient();
