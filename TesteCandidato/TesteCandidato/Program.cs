@@ -3,7 +3,9 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Net;
+using System.Text;
 
 namespace TesteCandidato
 {
@@ -28,6 +30,17 @@ namespace TesteCandidato
             //TODO: Fazer um projeto WEB
 
             //TODO: Perguntar se o usuário quer consultar se logradouro existe na base
+            Console.WriteLine("Olá bem vindo ao sistema de consultar CEP!");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("Gostaria de consultar se o logradouro existe na base?\n Se quiser, digite SIM, senão SAIR");
+
+            var respostaIniciarSistema = Console.ReadLine();
+
+            if (respostaIniciarSistema.ToUpper() == "SAIR")
+            {
+                Console.WriteLine("Obrigado! Volte sempre!");
+                return;
+            }
 
             //TODO: Criar banco de dados - LocalDB com o nome CEP
             //TODO: Adicionar tabela conforme script abaixo
@@ -40,17 +53,17 @@ namespace TesteCandidato
             //SET QUOTED_IDENTIFIER ON
             //GO
 
-            //CREATE TABLE [dbo].[CEP] (
-            //    [Id]          INT            IDENTITY (1, 1) NOT NULL,
-            //    [cep]         CHAR (9)       NULL,
-            //    [logradouro]  NVARCHAR (500) NULL,
-            //    [complemento] NVARCHAR (500) NULL,
-            //    [bairro]      NVARCHAR (500) NULL,
-            //    [localidade]  NVARCHAR (500) NULL,
-            //    [uf]          CHAR (2)       NULL,
-            //    [unidade]     BIGINT         NULL,
-            //    [ibge]        INT            NULL,
-            //    [gia]         NVARCHAR (500) NULL
+            //CREATE TABLE[dbo].[CEP] (
+            //    [Id]          INT IDENTITY(1, 1) NOT NULL,
+            //    [cep]         CHAR(9)       NULL,
+            //    [logradouro] NVARCHAR(500) NULL,
+            //    [complemento] NVARCHAR(500) NULL,
+            //    [bairro] NVARCHAR(500) NULL,
+            //    [localidade] NVARCHAR(500) NULL,
+            //    [uf] CHAR(2)       NULL,
+            //    [unidade] BIGINT NULL,
+            //    [ibge]        INT NULL,
+            //    [gia]         NVARCHAR(500) NULL
             //);
 
             Console.WriteLine("Digite um cep:");
@@ -59,12 +72,10 @@ namespace TesteCandidato
             cep = cep.Replace("-", string.Empty); //Para retirar hifen
             string result = string.Empty;
 
-            
-
             do
             {
                 if(result.Contains("erro") || cep.Length > 8){
-                    Console.WriteLine("CEP Inválido - Verifique se digitou os números corretamente e o número de caracteres.");
+                    Console.WriteLine("CEP Inválido - Verifique se digitou os números corretamente e o número de caracteres deve ser no máximo 8.");
                     System.Console.WriteLine("---------------------------------------------------------------");
                     Console.WriteLine("Digite o cep novamente:");
 
@@ -73,19 +84,20 @@ namespace TesteCandidato
                 }
                 //TODO: Implementar forma de fazer o usuário poder errar várias vezes o CEP informado
                 //TODO: Melhorar validação do CEP.
-                if (cep.Length > 8)
-                {
-                    Console.WriteLine("CEP Inválido");
+                //if (cep.Length > 8)
+                //{
+                //    Console.WriteLine("CEP Inválido");
 
-                    cep = Console.ReadLine();
-                    cep = cep.Replace("-", string.Empty);
-                }
+                //    cep = Console.ReadLine();
+                //    cep = cep.Replace("-", string.Empty);
+                //}
 
                 //Exemplo CEP 13050020
                 string viaCEPUrl = $"https://viacep.com.br/ws/{cep}/json/";
 
                 //TODO: Resolver dados com caracter especial no retorno do JSON 
                 WebClient client = new WebClient();
+                client.Encoding = Encoding.UTF8;
                 result = client.DownloadString(viaCEPUrl);
             } while (result.Contains("\"erro\": true"));
 
@@ -94,7 +106,7 @@ namespace TesteCandidato
             JObject jsonRetorno = JsonConvert.DeserializeObject<JObject>(result);
 
 
-            
+          
 
             //TODO: Validar CEP existente
             string query = "INSERT INTO [dbo].[CEP] ([cep], [logradouro], [complemento], [bairro], [localidade], [uf], [unidade], [ibge], [gia]) VALUES (";
@@ -108,7 +120,8 @@ namespace TesteCandidato
             query = query + ",'" + jsonRetorno["ibge"] + "'";
             query = query + ",'" + jsonRetorno["gia"] + "'" + ")";
 
-            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CEP;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;");
+            string stringConexao = "Data Source=LAPTOP-LQPG37D5\\SQLEXPRESS;Initial Catalog=CEP;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
+            SqlConnection connection = new SqlConnection(stringConexao);
             SqlCommand sqlCommand = new SqlCommand(query, connection);
 
             sqlCommand.CommandType = CommandType.Text;
@@ -132,11 +145,11 @@ namespace TesteCandidato
             connection.Dispose();
 
             ////TODO: Retornar os dados do CEP infomado no início para o usuário
-            //System.Console.WriteLine($"O CEP digitado remete ao endereço: \nCEP: {jsonRetorno.cep} \nLogradouro: {jsonRetorno.logradouro}\n" +
-            //    $"            Complemento: {jsonRetorno.complemento}\n" +
-            //    $"            Bairro: {jsonRetorno.bairro}\n" +
-            //    $"            Localidade: {jsonRetorno.localidade}\n" +
-            //    $"            UF: {jsonRetorno.uf} \n");
+            System.Console.WriteLine($"O CEP digitado remete ao endereço: \nCEP: {jsonRetorno["cep"]} \nLogradouro: {jsonRetorno["logradouro"]}\n" +
+                $"Complemento: {jsonRetorno["complemento"]}\n" +
+                $"Bairro: {jsonRetorno["bairro"]}\n" +
+                $"Localidade: {jsonRetorno["localidade"]}\n" +
+                $"UF: {jsonRetorno["uf"]} \n");
 
             Console.WriteLine("Deseja visualizar todos os CEPs de alguma UF? Se sim, informar UF, se não, informar sair.");
             string resposta = Console.ReadLine();
@@ -159,7 +172,7 @@ namespace TesteCandidato
 
 
 
-            connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CEP;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;");
+            connection = new SqlConnection(stringConexao);
             sqlCommand = new SqlCommand("Select * from CEP", connection);
 
             SqlDataAdapter adapter = new SqlDataAdapter();

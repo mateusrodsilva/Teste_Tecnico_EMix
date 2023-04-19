@@ -24,19 +24,59 @@ namespace TesteCandidatoTriangulo
         /// <returns>Retorna o resultado do calculo conforme regra acima</returns>
         public int ResultadoTriangulo(string dadosTriangulo)
         {
-            int[][] triangle = JsonSerializer.Deserialize<int[][]>(dadosTriangulo);
+            //VERçÃO 1
+            //int[][] triangle = JsonSerializer.Deserialize<int[][]>(dadosTriangulo);
+            //int rowCount = triangle.Length;
 
-            for (int i = triangle.Length - 2; i >= 0; i--)
+            //if (rowCount == 0)
+            //{
+            //    return 0;
+            //}
+
+            //if (rowCount == 1)
+            //{
+            //    return triangle[0][0];
+            //}
+
+            //for (int i = rowCount - 2; i >= 0; i--)
+            //{
+            //    int[] currentLine = triangle[i];
+            //    int[] nextLine = triangle[i + 1];
+
+            //    for (int j = 0; j < currentLine.Length; j++)
+            //    {
+            //        currentLine[j] += Math.Max(nextLine[j], nextLine[j + 1]);
+            //    }
+            //}
+
+            //return triangle[0][0];
+
+
+            //Versão 2
+            int[][] triangle = JsonSerializer.Deserialize<int[][]>(dadosTriangulo);
+            int total = triangle[0][0];
+            int index = 0;
+
+            for (int i = 1; i < triangle.Length; i++)
             {
-                for (int j = 0; j <= i; j++)
+                int[] currentLine = triangle[i];
+                int left = currentLine[index];
+                int right = currentLine.Length > index + 1 ? currentLine[index + 1] : 0;
+
+                if (left > right)
                 {
-                    int[] nextLine = triangle[i + 1];
-                    int maxSum = Math.Max(nextLine[j], nextLine[j + 1]);
-                    triangle[i][j] += maxSum;
+                    total += left;
+                }
+                else
+                {
+                    total += right;
+                    index++;
                 }
             }
 
-            return triangle[0][0];
+            return total;
+
+
             // return 0;
         }
     }
