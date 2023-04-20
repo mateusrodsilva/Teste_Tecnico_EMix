@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CEPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CEP">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cep" Type="char" MaxLength="9" />
+          <Property Name="logradouro" Type="nvarchar" MaxLength="500" />
+          <Property Name="complemento" Type="nvarchar" MaxLength="500" />
+          <Property Name="bairro" Type="nvarchar" MaxLength="500" />
+          <Property Name="localidade" Type="nvarchar" MaxLength="500" />
+          <Property Name="uf" Type="char" MaxLength="2" />
+          <Property Name="unidade" Type="bigint" />
+          <Property Name="ibge" Type="int" />
+          <Property Name="gia" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityContainer Name="CEPModelStoreContainer">
+          <EntitySet Name="CEP" EntityType="Self.CEP" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CEPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CEP">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cep1" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="logradouro" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="complemento" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="bairro" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="localidade" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="uf" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="unidade" Type="Int64" />
+          <Property Name="ibge" Type="Int32" />
+          <Property Name="gia" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="CEPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CEP" EntityType="Self.CEP" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CEPModelStoreContainer" CdmEntityContainer="CEPEntities">
+          <EntitySetMapping Name="CEP">
+            <EntityTypeMapping TypeName="CEPModel.CEP">
+              <MappingFragment StoreEntitySet="CEP">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="cep1" ColumnName="cep" />
+                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="localidade" ColumnName="localidade" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="unidade" ColumnName="unidade" />
+                <ScalarProperty Name="ibge" ColumnName="ibge" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

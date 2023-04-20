@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace TesteCandidatoTriangulo
 {
@@ -24,35 +18,6 @@ namespace TesteCandidatoTriangulo
         /// <returns>Retorna o resultado do calculo conforme regra acima</returns>
         public int ResultadoTriangulo(string dadosTriangulo)
         {
-            //VERçÃO 1
-            //int[][] triangle = JsonSerializer.Deserialize<int[][]>(dadosTriangulo);
-            //int rowCount = triangle.Length;
-
-            //if (rowCount == 0)
-            //{
-            //    return 0;
-            //}
-
-            //if (rowCount == 1)
-            //{
-            //    return triangle[0][0];
-            //}
-
-            //for (int i = rowCount - 2; i >= 0; i--)
-            //{
-            //    int[] currentLine = triangle[i];
-            //    int[] nextLine = triangle[i + 1];
-
-            //    for (int j = 0; j < currentLine.Length; j++)
-            //    {
-            //        currentLine[j] += Math.Max(nextLine[j], nextLine[j + 1]);
-            //    }
-            //}
-
-            //return triangle[0][0];
-
-
-            //Versão 2
             int[][] triangle = JsonSerializer.Deserialize<int[][]>(dadosTriangulo);
             int total = triangle[0][0];
             int index = 0;
@@ -75,9 +40,6 @@ namespace TesteCandidatoTriangulo
             }
 
             return total;
-
-
-            // return 0;
         }
     }
 }

@@ -10,6 +10,8 @@ Foram propostos 2 testes com o projeto já iniciado:
 
 - .NET Framework 4.8
 - SQL Server
+- Entity Framework
+- Teste de unidade
 - Visual Studio 2022
 
 ## Autor

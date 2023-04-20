@@ -1,50 +1,69 @@
-public class CepRepository{
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using TesteCandidato.Context;
 
-    const string connectionString = "Data Source=LAPTOP-LQPG37D5\\SQLEXPRESS;Initial Catalog=CEP;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;"; 
-
-    public async bool ConsultaCEPCadastrado(string cep){
-        await using (var db = new SqlConnection(connectionString))
+namespace TesteCandidato.Repositories
+{
+    public class CepRepository
+    {
+        public bool ConsultaCEPCadastrado(string cep)
         {
-            await db.OpenAsync();
-            var query = $"Select cep From CEP WHERE cep = {cep}";
-            var cepCadastrado = await db.QueryAsync<Cep>(query);
-
-            if(cepCadastrado.cep == cep){
-                return true;
-            }else{
-                return false;
-            }
-        }
-    }
-
-    public async List<Cep> ListaTodosCepsPorUf(string uf){
-        await using (var db = new SqlConnection(connectionString))
-        {
-            await db.OpenAsync();
-            var query = $"Select * From CEP WHERE cep = {cep}";
-            var cepsUF = await db.QueryAsync<Cep>(query).ToList();
-
-            return cepsUF;
-        }
-    }
-
-    public async bool CadastraCEP(Cep novoCep){
-         await using (var db = new SqlConnection(connectionString))
+            using (CEPEntities DB = new CEPEntities())
             {
-                try
-                {
-                    await db.OpenAsync();
-                    var query = @"Insert Into Cep Values(@cep,@logradouro,@complemento,@localidade,@uf,@unidade,@ibge,@gia)";
-                    await db.ExecuteAsync(query, novoCep);
+                var cepCadastrado = DB.CEP.Select(x => x.cep1).FirstOrDefault(x => x == cep);
 
-                    Console.WriteLine($"CEP {novoCep.cep} incluido com sucesso");
+                if (cepCadastrado == cep)
+                {
                     return true;
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine(ex.Message);
                     return false;
                 }
             }
+
+        }
+
+        public IEnumerable<CEP> ListaTodosCepsPorUf(string uf)
+        {
+            using (CEPEntities DB = new CEPEntities())
+            {
+                var cepsUF = DB.CEP.Where(x => x.uf == uf).ToList();
+                return cepsUF;
+            }
+        }
+
+        public bool CadastraCEP(CEP novoCep)
+        {
+            try
+            {
+                using (CEPEntities DB = new CEPEntities())
+                {
+                    DB.CEP.Add(novoCep);
+                    DB.SaveChanges();
+
+                    Console.WriteLine($"CEP {novoCep.cep1} incluido com sucesso");
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public List<string> ListaTodosUFsCadastradas()
+        {
+
+            using (CEPEntities DB = new CEPEntities())
+            {
+                var ufs = DB.CEP.AsQueryable().Select(x => x.uf).ToList();
+
+                return ufs;
+            }
+        }
     }
 }
